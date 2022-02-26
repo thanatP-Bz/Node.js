@@ -63,3 +63,13 @@ to use router we need to export the file and set app.use("route name", "name's f
 //express controller
 we create the function that control the route export as the object and destructure in other file.
 
+//CRUD
+create read update delete
+
+//how to connect to db
+use mongoose 
+
+//use env to keep our info secretly
+
+//Schema
+
