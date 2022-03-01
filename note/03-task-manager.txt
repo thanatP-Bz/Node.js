@@ -27,7 +27,9 @@ get and res.send
 all has 2 paras "*" req, res / res.status.send()
 
 //how to send file 
+import a path
 We need a path then path.resolve("__dirname,"")
+res.sendFile(path.resolve(__dirname, "path ot flie"))
 
 //static is the file that server doen't have to change
 app.use(express.static("name of folder"));

@@ -1,30 +1,33 @@
+require("dotenv").config();
+//async error
+
 const express = require("express");
 const app = express();
-const tasks = require("./routes/task");
-const connectDB = require("./DB/connect");
-const notFound = require("./middleware/not-found");
-const errorHandlerMiddleware = require("./middleware/error-handler");
 
-require("dotenv").config();
+const notFoundMiddleware = require("./middleware/not-found");
+const errorMiddleware = require("./middleware/error-handler");
 
 //middleware
-app.use(express.static("./public"));
 app.use(express.json());
 
-//route
+app.get("/", (req, res) => {
+  res.send(`<h1>Store API </h1><a href="/api/v1/products">Product route</a>`);
+});
 
-app.use("/api/v1/tasks", tasks);
-app.use(notFound);
-app.use(errorHandlerMiddleware);
+//product route
+app.use(notFoundMiddleware);
+app.use(errorMiddleware);
 
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 const start = async () => {
   try {
-    await connectDB(process.env.MONGO_URI);
-    app.listen(port, console.log(`Listening to the port ${port}`));
+    //connect to Db
+    app.listen(port, () => {
+      console.log(`listening to port 5000...`);
+    });
   } catch (error) {
-    console.log(err);
+    console.log(eer);
   }
 };
 
