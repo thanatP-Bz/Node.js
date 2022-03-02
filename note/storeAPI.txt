@@ -1,0 +1,21 @@
+// middleware set up app.use(express.json())
+
+//the way to response to request
+res.status(200).json({})
+
+//how to set router
+const express = require("express")
+const router = express.Router()
+
+then destructuring the function which import from the controller
+
+router.route("/").get(*function*)
+
+export router
+
+import to the app.js app.use("link", pass Router here)
+
+//how to set schema
+const mongoose = require("mongoose")
+const productSchema = new mongoose.Schema({in here will be set data types etc...})
+module.export = mongoose.model("name", schema objects)
