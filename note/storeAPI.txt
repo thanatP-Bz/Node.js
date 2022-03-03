@@ -19,3 +19,6 @@ import to the app.js app.use("link", pass Router here)
 const mongoose = require("mongoose")
 const productSchema = new mongoose.Schema({in here will be set data types etc...})
 module.export = mongoose.model("name", schema objects)
+
+//use find method
+const products = await Product.find({}) emptry object will send a default value
