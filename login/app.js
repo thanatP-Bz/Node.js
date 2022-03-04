@@ -6,11 +6,13 @@ require("dotenv").config();
 
 //middleware
 app.use(express.json());
-/* app.use(express.urlencoded({ extended: true })); */
-const port = 5000;
+app.use(express.static("./public"));
+app.use(express.urlencoded({ extended: true }));
 
+//route
 app.use("/api/v2", route);
 
+const port = 5000;
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URI);
