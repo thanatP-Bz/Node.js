@@ -9,9 +9,12 @@ const createName = async (req, res) => {
   res.status(201).json(models);
 };
 
-const login = async () => {};
+const login = async (req, res) => {
+  res.send("POST");
+};
 
 module.exports = {
   createName,
   getAllName,
+  login,
 };

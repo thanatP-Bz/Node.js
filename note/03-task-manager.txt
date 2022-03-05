@@ -79,3 +79,7 @@ It is an object collection which can be difind any types of data
 -basic validation
 will send back promise and need a try catch block
 
+//how to acess the form 
+destruct the property by the name in html form it is a key pair value
+app.use(express.urlencoded({ extended: true }));
+in the function DO NOT forget to return the value
