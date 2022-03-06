@@ -3,37 +3,29 @@ require("express-async-errors");
 
 const express = require("express");
 const app = express();
-
-const connectDB = require("./db/connect");
-const productRouter = require("./routes/products");
+const mainRouter = require("./routes/main");
 
 const notFoundMiddleware = require("./middleware/not-found");
-const errorMiddleware = require("./middleware/error-handler");
+const errorHandlerMiddleware = require("./middleware/error-handler");
 
-//middleware
+// middleware
+app.use(express.static("./public"));
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send(`<h1>Store API </h1><a href="/api/v1/products">Product route</a>`);
-});
+app.use("/api/v1", mainRouter);
 
-app.use("/api/v1/products", productRouter);
-
-//product route
 app.use(notFoundMiddleware);
-app.use(errorMiddleware);
+app.use(errorHandlerMiddleware);
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 
 const start = async () => {
   try {
-    //connect to DB
-    await connectDB(process.env.MONGO_URI);
-    app.listen(port, () => {
-      console.log(`listening to port 5000...`);
-    });
+    app.listen(port, () =>
+      console.log(`Server is listening on port ${port}...`)
+    );
   } catch (error) {
-    console.log(eer);
+    console.log(error);
   }
 };
 

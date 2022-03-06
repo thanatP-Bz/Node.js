@@ -1,0 +1,18 @@
+//JWT
+// check username, password in post(login) request
+// if exist create new JWT
+// send back to fron-end
+// setup authentication so only the request with JWT can access the dasboard
+
+//how to use JWT 
+require jasonwebtoken
+
+-create new token needs 3 thing
+for the payload keep it small
+const token = jwt.sign({id, username},(secret),{expireIn: "30d"}(option))
+
+-send bearer token
+how to check authentication
+  const authHeader = req.headers.authorization;
+
+check if(!authHeader startsWith("Bearer")) throw error
