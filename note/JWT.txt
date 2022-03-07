@@ -16,3 +16,12 @@ how to check authentication
   const authHeader = req.headers.authorization;
 
 check if(!authHeader startsWith("Bearer")) throw error
+
+//how to verify token
+const token = authHeader.split("")[1]
+
+try {
+const decoded = jwt.verify(token, process.env.JWT_SECRET)
+} catch (err) {
+thow err
+}
